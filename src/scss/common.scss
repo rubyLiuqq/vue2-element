@@ -1,0 +1,62 @@
+@function rem($px) {
+  @return ($px * 2 / (3 * 72)) * 1rem;
+}
+
+$pxrem: (2 / (3 * 72));
+html, body, h1, h2, h3, h4, h5, h6, p, ul, ol, dl, li, dt, dd, th, td, button, input, form {
+  margin: 0;
+  padding: 0;
+}
+
+html {-webkit-text-size-adjust: 100%;}
+html * {
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+html, body { height: 100%; }
+
+body {
+  position: relative;
+  color: #333;
+  font-size: 12px;
+  font-family: "Source Han Sans", sans-serif;
+}
+
+a {
+  color: #666;
+  text-decoration: none;
+}
+
+img, textarea {
+  border: none;
+  vertical-align: middle;
+}
+ul, ol {list-style: none;}
+
+i, em {font-style: normal;}
+table {
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+
+button, input, textarea, select {
+  box-sizing: border-box;
+  -webkit-appearance: none;
+}
+textarea {resize:none;}
+
+.fl{float: left;}
+.fr{float: right;}
+.noscroll {
+  height: 100%;
+  overflow: hidden;
+}
+
+.clearfix {
+  overflow: auto;
+  _height: 1%;
+}
+
+.icon {
+  display: inline-block;
+  vertical-align: middle;
+}
