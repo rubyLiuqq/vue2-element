@@ -7,20 +7,36 @@
         <div class="bar-text">首页</div>
       </li>
       <li class="discovery">
+
         <i class="iconfont icon-chakan2"></i>
-        <div class="bar-text">发现</div>
+        <div class="bar-text">搜索</div>
       </li>
       <li class="order">
         <i class="iconfont icon-quanbudingdan"></i>
         <div class="bar-text">订单</div>
       </li>
       <li class="my">
-        <i class="iconfont icon-31wode"></i>
-        <div class="bar-text">我的</div>
+        <router-link :to="'/member'">
+          <i class="iconfont icon-31wode"></i>
+          <div class="bar-text">我的</div>
+        </router-link>
       </li>
     </ul>
   </div>
 </template>
+
+<script>
+import Vue from 'vue';
+
+export default Vue.extend({
+  data() {
+    return {
+
+    };
+  },
+});
+</script>
+
 
 <style lang="scss">
 @import '../assets/font/iconfont.css';
@@ -28,7 +44,7 @@
 
 .footer-bar {
   width: 100%;
-  height: rem(400);
+  height: rem(250);
   background: #fff;
   border-top: 1px solid #f0f0f0;
   box-shadow: 10px 10px 20px #888;
@@ -37,7 +53,7 @@
   left: 0;
 
   i {
-    font-size: 28px;
+    font-size: 20px;
   }
 
   ul {
@@ -47,6 +63,10 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-around;
+
+    li {
+      text-align: center;
+    }
   }
 
   .bar-text {

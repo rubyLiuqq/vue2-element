@@ -1,5 +1,13 @@
-@function rem($px) {
+@function rem108($px) {
   @return ($px * 2 / (3 * 72)) * 1rem;
+}
+
+@function rem($px) {
+  @return ($px / 72) * 1rem;
+}
+
+body {
+  background-color: #f5f5f5;
 }
 
 $pxrem: (2 / (3 * 72));
