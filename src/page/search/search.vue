@@ -1,13 +1,16 @@
 <template>
   <div class="search">
-    <div ></div>
+    This is Search;
+    <div>
+
+    </div>
   </div>
 </template>
 
 <script>
 export default {
 
-}
+};
 </script>
 
 <style lang="scss">

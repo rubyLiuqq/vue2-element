@@ -1,9 +1,9 @@
 <template>
   <div class="member">
-    <header :go-back="true" :head-title="'我的'"></header>
+    <head-top :go-back="true" :head-title="profileTitle"></head-top>
 
     <!--  无论是否登陆，会全局拦截，跳转登陆页面 -->
-    <router-link :to="'/memberInfo'">
+    <router-link :to="'/member/memberInfo'">
       <div class="member-loading">
         <img class="unlode-avatar" src="../../assets/images/avatar.png" alt="">
         <div class="loading-content">
@@ -63,23 +63,25 @@
     </section>
 
     <section>
-      <div class="member-site">
+      <router-link :to="'/mySite'" class="member-site">
         <i class="iconfont icon-dangdi"></i>
         <div class="member-right">
           <span>我的地址</span>
           <i class="iconfont icon-fenxiang2-copy loading-next"></i>
         </div>
-      </div>
+      </router-link>
     </section>
 
     <section>
-      <div class="member-store">
-        <i class="iconfont icon-shopping"></i>
-        <div class="member-right">
-          <span>金币商城</span>
-          <i class="iconfont icon-fenxiang2-copy loading-next"></i>
+      <a href='https://home.m.duiba.com.cn/#/chome/index'>
+        <div class="member-store">
+          <i class="iconfont icon-shopping"></i>
+          <div class="member-right">
+            <span>金币商城</span>
+            <i class="iconfont icon-fenxiang2-copy loading-next"></i>
+          </div>
         </div>
-      </div>
+      </a>
       <div class="member-gift">
         <i class="iconfont icon-liwuhuodong"></i>
         <div class="member-right">
@@ -104,14 +106,18 @@
         </div>
       </div>
     </section>
+    <!-- <transition name="router-slid" mode="out-in">
+      <router-view></router-view>
+    </transition> -->
   </div>
 </template>
 
 <script>
 import Vue from 'vue';
-import Header from '../../components/Header.vue';
+import headTop from '../../components/Header.vue';
 
 export default Vue.extend({
+  name: 'member',
   data() {
     return {
       profileTitle: '我的',
@@ -123,7 +129,7 @@ export default Vue.extend({
     };
   },
   components: {
-    Header,
+    headTop,
   },
 });
 </script>
@@ -131,6 +137,7 @@ export default Vue.extend({
 
 <style lang="scss">
 @import '../../scss/common.scss';
+@import '../../scss/mixin.scss';
 
 .member-loading {
   display: flex;
@@ -138,12 +145,12 @@ export default Vue.extend({
   align-items: center;
   height: rem(400);
   color: #fff;
+  margin-top: rem(200);
   padding: rem(80);
   background-image: linear-gradient(90deg, #0af, #0085ff);
 
   .unlode-avatar {
-    width: rem(260);
-    height: rem(260);
+    @include wh(rem(260), rem(260));
     border-radius: 50%;
   }
 
@@ -167,8 +174,7 @@ export default Vue.extend({
 }
 
 .main-info {
-  width: 100%;
-  height: rem(400);
+  @include wh(100%, rem(400));
   display: table;
   background: #fff;
 
@@ -186,8 +192,7 @@ export default Vue.extend({
     }
 
     .info-icon {
-      width: rem(150);
-      height: rem(150);
+      @include wh(rem(150), rem(150));
       display: inline-block;
       border-radius: 50%;
     }
@@ -230,8 +235,7 @@ export default Vue.extend({
 .member-site,
 .member-store, .member-gift,
 .member-kefu, .member-dianpu {
-  width: 100%;
-  height: rem(210);
+  @include wh(100%, rem(210));
   line-height: rem(210);
   background: #fff;
   padding: 0 rem(80);
@@ -280,8 +284,11 @@ export default Vue.extend({
     font-size: 15px;
   }
 }
-
-
-
+.router-slid-enter-active, .router-slid-leave-active {
+  transition: all .4s;
+}
+.router-slid-enter, .router-slid-leave-active {
+  transform: translate3d(2rem, 0, 0);
+  opacity: 0;
+}
 </style>
-
