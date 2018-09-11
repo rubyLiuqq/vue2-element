@@ -3,17 +3,22 @@
   <div class="footer-bar">
     <ul>
       <li class="home">
-        <i class="iconfont icon-31shouye"></i>
-        <div class="bar-text">首页</div>
+        <router-link :to="'/'">
+          <i class="iconfont icon-31shouye"></i>
+          <div class="bar-text">首页</div>
+        </router-link>
       </li>
       <li class="discovery">
-
-        <i class="iconfont icon-chakan2"></i>
-        <div class="bar-text">搜索</div>
+        <router-link :to="'/search'">
+          <i class="iconfont icon-chakan2"></i>
+          <div class="bar-text">搜索</div>
+        </router-link>
       </li>
       <li class="order">
-        <i class="iconfont icon-quanbudingdan"></i>
-        <div class="bar-text">订单</div>
+        <router-link :to="'/order'">
+          <i class="iconfont icon-quanbudingdan"></i>
+          <div class="bar-text">订单</div>
+        </router-link>
       </li>
       <li class="my">
         <router-link :to="'/member'">
