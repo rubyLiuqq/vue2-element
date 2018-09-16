@@ -1,7 +1,11 @@
 <template>
   <div class="home">
     <head-top :head-site="true"></head-top>
-    <div class="search-wrapper"></div>
+    <div class="search-wrapper">
+      <div role="">
+
+      </div>
+    </div>
   </div>
 </template>
 
@@ -13,11 +17,11 @@ export default Vue.extend({
   data() {
     return {
 
-    }
+    };
   },
   components: {
     headTop,
-  }
+  },
 });
 </script>
 
