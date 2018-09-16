@@ -1,16 +1,22 @@
 <template>
   <div class="search">
-    This is Search;
-    <div>
 
+    <div>
+      <p>热门搜索</p>
     </div>
   </div>
 </template>
 
 <script>
-export default {
+import Vue from 'vue';
 
-};
+export default Vue.extend({
+  data() {
+    return {
+
+    }
+  }
+});
 </script>
 
 <style lang="scss">
