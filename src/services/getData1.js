@@ -1,8 +1,7 @@
 import axios from 'axios';
-import { REMOTE } from './common';
 
-// 城市选择页 citySiteSelect 定位地址
-const guesscity = () => axios.get('/v1/cities', {
+// 获取首页定位地址
+const cityGuess = () => axios.get('/v1/cities', {
   type: 'guess',
 });
 
@@ -68,8 +67,7 @@ const searchRestaurant = (geohash, keyword) => axios.get('/v4/restaurants', {
 });
 
 // 个人中心里编辑地址
-// var getAddressList = (user_id) => axios.get(`/v1/users/${user_id}/addresses`);
-const getAddressList = () => axios.get(REMOTE.address.queryAddress);
+var getAddressList = (user_id) => axios.get(`/v1/users/${user_id}/addresses`);
 
 // 获取food页面的 category 种类列表
 var foodCategory = (latitude, longitude) => fetch('GET', ApiUrl + '/shopping/v2/restaurant/category', {

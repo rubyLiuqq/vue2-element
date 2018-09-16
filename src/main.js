@@ -4,7 +4,7 @@ import App from './App.vue';
 import router from './router';
 
 Vue.config.productionTip = false;
-axios.defaults.baseURL = 'https://elm.cangdu.org';
+// axios.defaults.baseURL = 'https://elm.cangdu.org';
 axios.defaults.withCredentials = true;
 
 export default new Vue({

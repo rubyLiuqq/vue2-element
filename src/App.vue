@@ -7,6 +7,7 @@
 
 <script>
 import Vue from 'vue';
+import { init } from './services/mock/mock';
 import FooterBar from './components/FooterBar.vue';
 
 export default Vue.extend({
@@ -14,6 +15,10 @@ export default Vue.extend({
 
   components: {
     FooterBar,
+  },
+
+  mounted() {
+    init();
   },
 });
 </script>

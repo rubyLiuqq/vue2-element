@@ -4,7 +4,12 @@
 
 ## 技术组成
 
-> Vue2 + VueX + Vue-cli + Vue-router + webpack + ES6/7 + axios + scss + flex + svg
+> Vue2 + VueX + Vue-cli + Vue-router + webpack + ES6/7 + axios + scss + flex + svg + mockjs
+
+## 技术亮点
+mockjs 模拟接口数据
+webpack4
+axios 的全局配置
 
 ## 项目运行
 

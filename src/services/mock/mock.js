@@ -1,4 +1,6 @@
 
 import address from './address.js';
 
-address();
+export const init = () => {
+  address();
+};

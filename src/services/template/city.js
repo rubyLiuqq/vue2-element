@@ -1,3 +1,8 @@
+/**
+ * currentcity 当前所在城市
+ * searchdata  搜索地址，地址的搜索关联用
+ */
+
 export const currentcity = {
   id: 1,
   name: "上海",
@@ -10,8 +15,7 @@ export const currentcity = {
   pinyin: "shanghai"
 };
 
-export const searchdata = [
-{
+export const searchdata = [{
   name: "人民广场[地铁站]",
   address: "地铁1号线,地铁2号线,地铁8号线",
   longitude: 121.475465,
