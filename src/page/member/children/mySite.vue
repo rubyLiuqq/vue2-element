@@ -3,7 +3,7 @@
     <header></header>
     <ul class="sites">
       <li v-for="(site, index) in siteList" :key="index">
-        <span :v-text="getGeoHsah(site.st_geohash)"></span>
+        <!-- <span :v-text="getGeoHsah(site.st_geohash)"></span> -->
       </li>
     </ul>
   </div>
@@ -24,13 +24,22 @@ export default Vue.extend({
   components: {
     Header,
   },
-  methods: {
-    getGeoHsah(geohash) {
-      axios.get(`/v2/pois/${geohash}`).then((place) => {
-        return place.name;
-      });
-    },
+  mounted() {
+    // 获取个人中心页编辑地址
+    getAddressList().then((listData) => {
+      if (listData.data.success && listData.data.code === 200) {
+        this.siteList = listData.data.data.addressData;
+        console.log('==========>', this.siteList);
+      }
+    });
   },
+  // methods: {
+  //   getGeoHsah(geohash) {
+  //     axios.get(`/v2/pois/${geohash}`).then((place) => {
+  //       return place.name;
+  //     });
+  //   },
+  // },
 });
 </script>
 
