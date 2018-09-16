@@ -1,5 +1,5 @@
 <template>
-  <div class="header">
+  <div class="header" :style="{backgroundImage: backgroundColor}">
     <slot name='search'></slot>
     <div class="head_goback" v-if="goBack" @click="$router.go(-1)">
       <i class="iconfont icon-31fanhui1"></i>
@@ -42,6 +42,10 @@ export default Vue.extend({
       type: Boolean,
       default: false,
     },
+    backgroundColor: {
+      type: String,
+      default: '',
+    }
   },
 });
 </script>
