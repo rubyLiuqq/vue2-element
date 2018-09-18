@@ -29,17 +29,9 @@ export default Vue.extend({
     getAddressList().then((listData) => {
       if (listData.data.success && listData.data.code === 200) {
         this.siteList = listData.data.data.addressData;
-        console.log('==========>', this.siteList);
       }
     });
   },
-  // methods: {
-  //   getGeoHsah(geohash) {
-  //     axios.get(`/v2/pois/${geohash}`).then((place) => {
-  //       return place.name;
-  //     });
-  //   },
-  // },
 });
 </script>
 

@@ -11,8 +11,12 @@
         <div class="city-text">{{ currentCity }}</div>
       </div>
       <div class="city-site-list" v-for="(list, key) in listData" :key="key">
-        <p class="city-tips">{{list.tips}}</p>
-        <div class="city-text" v-for="(item, itemIndex) in list.site" :key="itemIndex"></div>
+        <a :name="key">
+          <p class="city-tips">{{key}}</p>
+        </a>
+        <div class="city-text" v-for="(item, itemIndex) in list" :key="itemIndex">
+          <span>{{item.name}}</span>
+        </div>
       </div>
     </div>
 
@@ -27,27 +31,45 @@
 
 <script>
 import Vue from 'vue';
+import { mapActions } from 'vuex';
 import headTop from '../../components/Header.vue';
-import { groupcity } from '../../services/getData.js';
+import { guesscity, groupcity } from '../../services/getData';
 
 export default Vue.extend({
   data() {
     return {
       profileTitle: '城市选择',
       currentTips: '当前定位城市',
-      currentCity: 'ceshi',
-      listData: [{
-        tips: A,
-        site: ['cesdsadad', 'koomsk', '打飞机送到家哦舒服', '测试洒大地']
-      },{
-        tips: B,
-        site: ['cesdsadad', '洒大地上']
-      }],
-      letters: ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'],
+      currentCity: '',
+      listData: {},
+      letters: [],
     };
   },
   components: {
     headTop,
+  },
+  methods: {
+    ...mapActions([
+      'updateCurrentCity',
+    ]),
+  },
+  mounted() {
+    guesscity().then((guesscityData) => {
+      if (guesscityData.data.code === 200 && guesscityData.data.success) {
+        const guesscityMap = guesscityData.data.data.guesscityData;
+        this.currentCity = guesscityMap.name;
+        this.updateCurrentCity({
+          currentCity: guesscityMap.name,
+        });
+      }
+    });
+    groupcity().then((groupcityData) => {
+      if (groupcityData.data.code === 200 && groupcityData.data.success) {
+        const groupcityMap = groupcityData.data.data.groupcityData;
+        this.letters = Object.keys(groupcityMap).sort();
+        this.listData = groupcityMap;
+      }
+    });
   },
 });
 </script>
@@ -81,9 +103,9 @@ export default Vue.extend({
   }
 
   .city-side-select {
-    position: absolute;
+    position: fixed;
     right: rem(50);
-    top: rem(356);
+    top: rem(900);
     width: rem(80);
     display: flex;
     flex-direction: column;
@@ -99,6 +121,7 @@ export default Vue.extend({
   }
 
   .city-site-content {
+    background: #fff;
 
     .city-tips {
       @include wh(100%, rem(200));
@@ -113,7 +136,21 @@ export default Vue.extend({
     .city-text {
       @include wh(100%, rem(200));
       background: white;
+      line-height: rem(200);
+      margin-left: rem(80);
       color: #666;
+      border-bottom: 1px solid #eee;
+      font-size: 14px;
+
+      &:last-child {
+        border-bottom: none;
+      }
+
+      span {
+        display: inline-block;
+        width: 80%;
+        height: 100%;
+      }
     }
   }
 }

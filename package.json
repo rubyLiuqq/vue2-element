@@ -21,14 +21,15 @@
   "homepage": "https://github.com/rubyLiuqq/vue2-element#readme",
   "dependencies": {
     "axios": "^0.18.0",
+    "js-cookie": "^2.2.0",
+    "mockjs": "^1.0.1-beta3",
     "node-sass": "^4.9.3",
     "sass-loader": "^7.1.0",
     "scss": "^0.2.4",
     "scss-loader": "0.0.1",
     "vue": "^2.5.2",
     "vue-router": "^3.0.1",
-    "vuex": "^3.0.1",
-    "mockjs": "^1.0.1-beta3"
+    "vuex": "^3.0.1"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",
