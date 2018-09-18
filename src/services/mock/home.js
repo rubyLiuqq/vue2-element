@@ -28,7 +28,7 @@ export default function () {
     },
   };
 
-  Mock.mock(REMOTE.address.queryGuesscity, queryGuesscity);
-  Mock.mock(REMOTE.address.queryHotcity, queryHotcity);
-  Mock.mock(REMOTE.address.queryGroupcity, queryGroupcity);
+  Mock.mock(REMOTE.home.queryGuesscity, queryGuesscity);
+  Mock.mock(REMOTE.home.queryHotcity, queryHotcity);
+  Mock.mock(REMOTE.home.queryGroupcity, queryGroupcity);
 }

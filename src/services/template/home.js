@@ -3,6 +3,7 @@
  * hotcity  首页热门城市
  * groupcity  首页所有城市
  */
+/* eslint-disable */
 export const guesscity = {
   "id": 1,
   "name": "上海",

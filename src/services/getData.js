@@ -2,19 +2,13 @@ import axios from 'axios';
 import { REMOTE } from './common';
 
 // 城市选择页 citySiteSelect 定位地址
-const guesscity = () => axios.get('/v1/cities', {
-  type: 'guess',
-});
+const guesscity = () => axios.get(REMOTE.home.queryGuesscity);
 
 // 获取首页热门城市
-const hotcity = () => axios.get('/v1/cities', {
-  type: 'hot',
-});
+const hotcity = () => axios.get(REMOTE.home.queryHotcity);
 
 // 获取首页所有城市
-const groupcity = () => axios.get('/v1/cities', {
-  type: 'group',
-});
+const groupcity = () => axios.get(REMOTE.home.queryGroupcity);
 
 // 获取当前所在城市
 const currentcity = id => axios.get(`/v1/cities/${id}`, {});
@@ -68,31 +62,30 @@ const searchRestaurant = (geohash, keyword) => axios.get('/v4/restaurants', {
 });
 
 // 个人中心里编辑地址
-// var getAddressList = (user_id) => axios.get(`/v1/users/${user_id}/addresses`);
 const getAddressList = () => axios.get(REMOTE.address.queryAddress);
 
 // 获取food页面的 category 种类列表
-var foodCategory = (latitude, longitude) => fetch('GET', ApiUrl + '/shopping/v2/restaurant/category', {
+const foodCategory = (latitude, longitude) => axios.get('/shopping/v2/restaurant/category', {
   latitude,
-  longitude
+  longitude,
 });
 
 // 获取food页面的配送方式
-var foodDelivery = (latitude, longitude) => fetch('GET', ApiUrl + '/shopping/v1/restaurants/delivery_modes', {
+const foodDelivery = (latitude, longitude) => axios.get('/shopping/v1/restaurants/delivery_modes', {
   latitude,
   longitude,
-  kw: ''
+  kw: '',
 });
 
 // 获取food页面的商家属性活动列表
-var foodActivity = (latitude, longitude) => fetch('GET', ApiUrl + '/shopping/v1/restaurants/activity_attributes', {
+const foodActivity = (latitude, longitude) => axios.get('/shopping/v1/restaurants/activity_attributes', {
   latitude,
   longitude,
-  kw: ''
+  kw: '',
 });
 
 export {
-  cityGuess,
+  guesscity,
   hotcity,
   groupcity,
   currentcity,
