@@ -15,7 +15,7 @@
         </router-link>
       </li>
       <li class="order">
-        <router-link :to="'/order'">
+        <router-link :to="'/orderList'">
           <i class="iconfont icon-quanbudingdan"></i>
           <div class="bar-text">订单</div>
         </router-link>

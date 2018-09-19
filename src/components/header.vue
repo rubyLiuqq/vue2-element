@@ -19,6 +19,11 @@
     <router-link class="head_add_site" :to="'/addSite'" v-if="addSite">
       <span>{{addSiteText}}</span>
     </router-link>
+    <!-- <router-link class="head-kefu" v-if="kefu">
+      <div class="kefu-icon">
+        <span></span>
+      </div>
+    </router-link> -->
   </div>
 </template>
 
@@ -54,6 +59,10 @@ export default Vue.extend({
     backgroundColor: {
       type: String,
       default: '',
+    },
+    kefu: {
+      type: Boolean,
+      default: false,
     },
   },
   computed: {
