@@ -3,6 +3,7 @@
  * searchdata  搜索地址，地址的搜索关联用
  */
 
+ /* eslint-disable */
 export const currentcity = {
   id: 1,
   name: "上海",

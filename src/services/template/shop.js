@@ -4,6 +4,7 @@
  * shopList
  */
 
+ /* eslint-disable */
 export const msiteAdress = {
   name: "黄浦区上海人民广场",
   address: "上海市黄浦区武胜路",

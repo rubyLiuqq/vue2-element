@@ -107,6 +107,27 @@ const foodActivity = (latitude, longitude) => axios.get('/shopping/v1/restaurant
   }
 });
 
+// 获取订单列表
+const getOrderList = (user_id, offset) => axios.get('/bos/v2/users/' + user_id + '/orders', {
+  limit: 10,
+  offset,
+});
+
+//获取订单详情
+const getOrderDetail = (user_id, orderid) => axios.get('/bos/v1/users/' + user_id + '/orders/' + orderid + '/snapshot', {});
+
+// 获取红包
+const getHongbaoNum = id => axios.get('/promotion/v2/users/' + id + '/hongbaos?limit=20&offset=0',{});
+
+// 获取过期红包
+const getExpired = id => axios.get('/promotion/v2/users/' + id + '/expired_hongbaos?limit=20&offset=0',{});
+
+// 兑换红包
+const exChangeHongbao = (id, exchange_code, captcha_code) => axios.get('/v1/users/' + id + '/hongbao/exchange',{
+  exchange_code,
+  captcha_code,
+});
+
 export {
   guesscity,
   hotcity,
@@ -121,4 +142,9 @@ export {
   foodCategory,
   foodDelivery,
   foodActivity,
+  getOrderList,
+  getOrderDetail,
+  getHongbaoNum,
+  getExpired,
+  exChangeHongbao,
 };

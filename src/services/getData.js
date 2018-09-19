@@ -65,24 +65,27 @@ const searchRestaurant = (geohash, keyword) => axios.get('/v4/restaurants', {
 const getAddressList = () => axios.get(REMOTE.address.queryAddress);
 
 // 获取food页面的 category 种类列表
-const foodCategory = (latitude, longitude) => axios.get('/shopping/v2/restaurant/category', {
-  latitude,
-  longitude,
-});
+const foodCategory = () => axios.get(REMOTE.food.queryCategory);
 
 // 获取food页面的配送方式
-const foodDelivery = (latitude, longitude) => axios.get('/shopping/v1/restaurants/delivery_modes', {
-  latitude,
-  longitude,
-  kw: '',
-});
+const foodDelivery = () => axios.get(REMOTE.food.queryDelivery);
 
 // 获取food页面的商家属性活动列表
-const foodActivity = (latitude, longitude) => axios.get('/shopping/v1/restaurants/activity_attributes', {
-  latitude,
-  longitude,
-  kw: '',
-});
+const foodActivity = () => axios.get(REMOTE.food.queryActivity);
+
+// 获取订单列表
+const getOrderList = () => axios.get(REMOTE.order.queryOrderList);
+
+//获取订单详情
+const getOrderDetail = () => axios.get(REMOTE.order.queryOrderDetail);
+
+// 获取红包
+const getHongbaoNum = () => axios.get(REMOTE.hongbao.queryDataList);
+
+// 获取过期红包
+const getExpired = ()=> axios.get(REMOTE.hongbao.queryExpired);
+// 兑换红包
+const exChangeHongbao = () => axios.get(REMOTE.hongbao.queryExchange);
 
 export {
   guesscity,
@@ -98,4 +101,9 @@ export {
   foodCategory,
   foodDelivery,
   foodActivity,
+  getOrderList,
+  getOrderDetail,
+  getHongbaoNum,
+  getExpired,
+  exChangeHongbao,
 };
