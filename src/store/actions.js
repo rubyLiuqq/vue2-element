@@ -7,7 +7,7 @@ export default {
   updateLoginStatus({ commit }, data = { isLogin: false }) {
     commit(UPDATE_LOGIN_STATUS, data);
   },
-  updateCurrentCity({ commit }, data = { currentCity: '' }) {
+  updateCurrentCity({ commit }, data = { currentCity: '', currentStGeohash: '' }) {
     commit(UPDATE_CURRENT_CITY, data);
   },
 };

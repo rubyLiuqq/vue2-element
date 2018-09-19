@@ -5,6 +5,7 @@ const state = {
   // 全局loading状态
   isLogin: checkLogin(),
   currentCity: '',
+  currentStGeohash: '',
 };
 
 export default state;

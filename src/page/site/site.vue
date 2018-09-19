@@ -17,7 +17,7 @@
       <div class="site-position">
         <p class="site-content-text">当前地址</p>
         <div class="site-content-posi">
-          <span class="current-city">{{currentPosition}}</span>
+          <span class="current-city" @click="harvestList()">{{currentPosition}}</span>
           <span :class="{ active: isClick }" class="reset-position" @click="resetPosition">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15 15" class="reset-position-icon">
               <g fill="none" fill-rule="evenodd">
@@ -31,7 +31,7 @@
       </div>
       <section class="harvest-address">
         <p class="site-content-text">收获地址</p>
-        <div class="harvest-lists" v-for="(item, key) of userAddress" :key="key">
+        <div class="harvest-lists" v-for="(item, key) of userAddress" :key="key" @click="harvestList(item)">
           <p>
             <span class="user-name">{{item.name}}</span>
             <span class="user-sex" v-if="item.sex === 1">男士</span>
@@ -71,7 +71,11 @@ export default Vue.extend({
 
   mounted() {
     this.selectText = this.currentCity || '选择城市';
-    this.getCurrentCity();
+    if (this.currentCity) {
+      this.currentPosition = this.currentCity;
+    } else {
+      this.getCurrentCity();
+    }
     this.getUserSiteList();
   },
 
@@ -90,11 +94,15 @@ export default Vue.extend({
           this.currentPosition = guesscityMap.name;
           this.updateCurrentCity({
             currentCity: guesscityMap.name,
+            currentStGeohash: `${guesscityMap.latitude},${guesscityMap.longitude}`,
           });
         }
       });
     },
 
+    /**
+     * 重新定位
+     */
     resetPosition() {
       this.isClick = true;
       this.getCurrentCity();
@@ -108,9 +116,20 @@ export default Vue.extend({
         if (address.data.code === 200 && address.data.success) {
           this.userAddress = address.data.data.addressData;
         }
-
-        console.log('userAddress', this.userAddress);
       });
+    },
+
+    /**
+     * 地址选择的交互事件
+     */
+    harvestList(item) {
+      this.$router.push('/');
+      if (item) {
+        this.updateCurrentCity({
+          currentCity: item.address_detail,
+          currentStGeohash: item.st_geohash,
+        });
+      }
     },
   },
   components: {
@@ -226,6 +245,7 @@ export default Vue.extend({
   }
 
   .harvest-address {
+    margin-bottom: rem(250);
 
     .harvest-lists {
       @include wh(100%, rem(200));

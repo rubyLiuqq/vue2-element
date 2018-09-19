@@ -11,7 +11,7 @@ import MemberInfo from '../page/member/children/memberInfo.vue';
 // 个人收获地址页面
 import MySite from '../page/member/children/mySite.vue';
 // 订单列表页
-import Order from '../page/order/order.vue';
+import OrderList from '../page/order/orderList.vue';
 // 登陆页
 import Login from '../page/login/login.vue';
 // 商品搜索页
@@ -27,6 +27,11 @@ export default new Router({
   routes: [
     {
       path: '/',
+      name: 'home',
+      component: Home,
+    },
+    {
+      path: '/home',
       name: 'home',
       component: Home,
     },
@@ -69,9 +74,9 @@ export default new Router({
       component: CitySiteSelect,
     },
     {
-      path: '/order',
-      name: 'order',
-      component: Order,
+      path: '/orderList',
+      name: 'orderList',
+      component: OrderList,
     },
   ],
 });

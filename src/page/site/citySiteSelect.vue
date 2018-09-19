@@ -60,6 +60,7 @@ export default Vue.extend({
         this.currentCity = guesscityMap.name;
         this.updateCurrentCity({
           currentCity: guesscityMap.name,
+          currentStGeohash: `${guesscityMap.latitude},${guesscityMap.longitude}`,
         });
       }
     });
